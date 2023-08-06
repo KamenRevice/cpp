@@ -12,6 +12,7 @@ int main()
     time_t now = time(0);
 
     char *dt = ctime(&now);
+    cout << endl;
     cout << "本地日期和时间：" << dt << endl;
 
     cout << "1970年到目前经过的秒数" << +now << endl;
