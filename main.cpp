@@ -1,60 +1,67 @@
+/*
+ * @Description:
+ * @Version: 0.1
+ * @Autor: kaiju
+ * @Date: 2023-12-08 16:06:55
+ * @LastEditors: kaiju
+ * @LastEditTime: 2024-04-10 14:15:21
+ */
+
 #include <bits/stdc++.h>
 
 using namespace std;
+int dir[4][2] = {0, 1, 1, 0, 0, -1, -1, 0}; // 表示四个方向
+// gird是一个二维数组，表示地图
+// visited标记访问过的节点，防止重复访问
+// x,y表示开始搜索的坐标
+void bfd(vector<vector<int>> &grid, vector<vector<bool>> &visited, int x, int y)
+{
+    queue<pair<int, int>> que; // 定义队列
+    que.push({x, y});          // 将起始节点加入队列
+    visited[x][y] = true;      // 标记起始节点已经访问
+    while (!que.empty())
+    {
+        pair<int, int> cur = que.front();
+        que.pop();                               // 取出队列的头部元素
+        int curx = cur.first, cury = cur.second; // 取出坐标
+        for (int i = 0; i < 4; i++)
+        {
+            int nextx = curx + dir[i][0], nexty = cury + dir[i][1]; // 计算下一个节点的坐标
+            if (nextx < 0 || nexty < 0 || nextx >= grid.size() || nexty >= grid[0].size())
+                continue;
+            ; // 坐标越界，直接跳过
+            if (!visited[nextx][nexty])
+            {                                 // 如果下一个节点没有访问过
+                que.push({nextx, nexty});     // 队列添加该节点为下一轮要遍历的节点
+                visited[nextx][nexty] = true; // 只要加入队列就立刻标记，避免重复访问
+            }
+        }
+    }
+}
+ void dfs(vector<vector<int>>&graph,vector<bool>&visited,int cur){
+        visited[cur]=true; // 标记当前节点已经访问
+        //处理当前节点x,y
+        for(int i=0;i<graph[cur].size();i++){
+            int next=graph[cur][i];
+            if(!visited[next]){// 如果下一个节点没有访问过
+                dfs(graph,visited,next); // 递归访问下一个节点
+            }
+        }
+ }
+
+void dfsTraversal(vector<vector<int>>&grahp){
+    int n=grahp.size();
+    vector<bool> visited=vector<bool>(n,false);
+    for(int i=0;i<n;i++){
+        if(!visited[i]){
+            dfs(grahp,visited,i);
+        }
+    }
+}
+
 
 int main()
 {
-
-    string s;
-    while (getline(cin, s))
-    {
-        float sum = 0;
-        int count = 0;
-        int flag = 1;
-        for (int i = 0; i < s.length(); i++)
-        {
-            if (s[i] == 'A')
-            {
-                sum += 4;
-                count++;
-                continue;
-            }
-            if (s[i] == 'B')
-            {
-                sum += 3;
-                count++;
-                continue;
-            }
-            if (s[i] == 'C')
-            {
-                sum += 2;
-                count++;
-                continue;
-            }
-            if (s[i] == 'D')
-            {
-                sum += 1;
-                count++;
-                continue;
-            }
-            if (s[i] == 'F')
-            {
-                sum += 0;
-                count++;
-                continue;
-            }
-            if (s[i] == ' ')
-            {
-                continue;
-            }
-
-            flag = 0;
-            cout << "Unknow" << endl;
-
-            break;
-        }
-        if (flag)
-            printf("%.2f\n", sum / count);
-    }
+    cout << "hello world" << endl;
     return 0;
 }

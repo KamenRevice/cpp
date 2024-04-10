@@ -1,3 +1,12 @@
+/*
+ * @Description:
+ * @Version: 0.1
+ * @Autor: kaiju
+ * @Date: 2023-11-16 16:27:27
+ * @LastEditors: kaiju
+ * @LastEditTime: 2024-04-07 16:20:07
+ */
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -5,34 +14,25 @@ using namespace std;
 class Solution
 {
 public:
-    int maximumSwap(int num)
+    bool isValid(string s)
     {
-        vector<int> cnt;
-        int mx = 0;
-        while (num)
+        if (s.size() % 2 != 0)
+            return false;
+        stack<char> st;
+        for (char c : s)
         {
-            int tmp = num % 10;
-            mx = max(mx, tmp);
-            cnt.push_back(tmp);
-            num = num / 10;
+            if (c == '(')
+                st.push(')');
+            else if (c == '[')
+                st.push(']');
+            else if (c == '{')
+                st.push('}');
+            else if (st.empty() || c != st.top())
+                return false;
+            else
+                st.pop();
         }
-        int n = cnt.size();
-        auto mxit = find(cnt.rbegin(), cnt.rend(), mx);
-        for (auto it = cnt.rbegin(); it != cnt.rend(); it++)
-        {
-            if (*it < *mxit)
-            {
-                swap(*it, *mxit);
-                break;
-            }
-        }
-        int ans = 0;
-        for (int j = 0; j < n; j++)
-        {
-            int tmp = cnt[j] * (pow(10, j));
-            ans += tmp;
-        }
-        return ans;
+        return st.empty();
     }
 };
 
@@ -40,12 +40,16 @@ int main()
 {
     Solution solution;
 
-    int num = 2736;
+    string s = "){";
 
     //  开始
     auto start = chrono::steady_clock::now();
     //
-    // cout << solution.maximumSwap(num) << endl;
+
+    auto ans = solution.isValid(s);
+
+    cout << ans << endl;
+
     // 结束
     auto end = chrono::steady_clock::now();
     // 时间差异

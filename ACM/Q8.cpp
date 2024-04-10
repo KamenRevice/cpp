@@ -1,4 +1,11 @@
-// https://kamacoder.com/problempage.php?pid=1007
+/*
+ * @Description: https://kamacoder.com/problempage.php?pid=1007
+ * @Version: 0.1
+ * @Autor: kaiju
+ * @Date: 2024-03-15 11:12:42
+ * @LastEditors: kaiju
+ * @LastEditTime: 2024-04-10 11:52:06
+ */
 
 #include <bits/stdc++.h>
 
@@ -30,5 +37,6 @@ int main()
         cout << ans << endl
              << endl;
     }
+
     return 0;
 }
