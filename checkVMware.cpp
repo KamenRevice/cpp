@@ -1,3 +1,11 @@
+/*
+ * @Description: 检查是否运行在虚拟机
+ * @Version: 0.1
+ * @Autor: kaiju
+ * @Date: 2023-09-04 15:34:17
+ * @LastEditors: kaiju
+ * @LastEditTime: 2024-04-10 14:40:29
+ */
 #include <stdio.h>
 #include <stdlib.h>
 

@@ -1,5 +1,11 @@
-// 2023.07.16
-//
+/*
+ * @Description: c++ time库
+ * @Version: 0.1
+ * @Autor: kaiju
+ * @Date: 2023-07-18 15:30:29
+ * @LastEditors: kaiju
+ * @LastEditTime: 2024-04-10 14:44:30
+ */
 
 #include <iostream>
 #include <ctime>

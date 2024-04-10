@@ -1,3 +1,11 @@
+/*
+ * @Description: 实现动态数组类Array，该类具有如下功能：
+ * @Version: 0.1
+ * @Autor: kaiju
+ * @Date: 2023-08-30 16:58:10
+ * @LastEditors: kaiju
+ * @LastEditTime: 2024-04-10 14:42:56
+ */
 #include <iostream>
 #include <cstring>
 #include <cstdlib>
