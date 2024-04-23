@@ -4,17 +4,24 @@
  * @Autor: kaiju
  * @Date: 2023-12-08 16:06:55
  * @LastEditors: kaiju
- * @LastEditTime: 2024-04-10 14:53:13
+ * @LastEditTime: 2024-04-15 14:48:33
  */
 
 #include <bits/stdc++.h>
 
 using namespace std;
+
+
+/**
+ * @description: 广度优先搜索
+ * @return {*}
+ * @author: kaiju
+ */
 int dir[4][2] = { 0, 1, 1, 0, 0, -1, -1, 0 }; // 表示四个方向
 // gird是一个二维数组，表示地图
 // visited标记访问过的节点，防止重复访问
 // x,y表示开始搜索的坐标
-void bfd(vector<vector<int>>& grid, vector<vector<bool>>& visited, int x, int y)
+void bfs(vector<vector<int>>& grid, vector<vector<bool>>& visited, int x, int y)
 {
     queue<pair<int, int>> que; // 定义队列
     que.push({ x, y });          // 将起始节点加入队列
@@ -38,6 +45,15 @@ void bfd(vector<vector<int>>& grid, vector<vector<bool>>& visited, int x, int y)
         }
     }
 }
+
+/**
+ * @description: 深度优先搜索
+ * @return {*}
+ * @param {vector<vector<int>>} grid
+ * @param {vector<vector<bool>>} visited
+ * @param {int} x
+ * @param {int} y
+ */
 void dfs(vector<vector<int>>& graph, vector<bool>& visited, int cur) {
     visited[cur] = true; // 标记当前节点已经访问
     //处理当前节点x,y
@@ -66,3 +82,4 @@ int main()
 
     return 0;
 }
+
